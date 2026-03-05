@@ -295,12 +295,35 @@ body {
   width: 100%; border-radius: 2px;
   margin-top: 24px; display: block;
   border: 1px solid var(--border);
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
 }
+.portfolio-img:hover { opacity: 0.85; }
 .section-dark .portfolio-img {
   border-color: rgba(200,148,60,0.2);
 }
 .section-alt .portfolio-img {
   border-color: var(--border);
+}
+
+/* ========== LIGHTBOX ========== */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+#lightbox.active { display: flex; }
+#lightbox-img {
+  max-width: min(900px, 90vw);
+  max-height: 85vh;
+  border-radius: 4px;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+  object-fit: contain;
 }
 
 
@@ -365,6 +388,11 @@ body {
 </style>
 </head>
 <body>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <!-- NAV -->
 <nav class="nav" id="mainNav">
@@ -753,6 +781,31 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+document.querySelectorAll('.portfolio-img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+lightbox.addEventListener('click', () => {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
 </script>
 
 </body>
