@@ -311,19 +311,6 @@ body {
 .section-dark .portfolio-img { border-color: rgba(200,148,60,0.2); }
 .section-alt .portfolio-img { border-color: var(--border); }
 
-/* Faculty: portrait left (320px) + 3 landscape right */
-.faculty-img-layout {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 24px;
-  margin-top: 48px;
-  align-items: start;
-}
-.faculty-img-portrait .img-placeholder { aspect-ratio: unset; margin-top: 0; }
-.faculty-img-portrait .portfolio-img { max-height: 640px; }
-.faculty-img-landscape { display: flex; flex-direction: column; gap: 24px; }
-.faculty-img-landscape .img-placeholder-empty { aspect-ratio: 2/1; min-height: unset; }
-
 /* Clinical: 3 columns */
 .clinical-img-layout {
   display: grid;
@@ -422,7 +409,6 @@ body {
   .section { padding: 80px 24px; }
   .cards-grid { grid-template-columns: 1fr; }
   .img-grid { grid-template-columns: 1fr; }
-  .faculty-img-layout { grid-template-columns: 1fr; }
   .clinical-img-layout { grid-template-columns: 1fr; }
   .hero { padding: 100px 24px 60px; }
 }
