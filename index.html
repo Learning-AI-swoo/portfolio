@@ -318,8 +318,8 @@ body {
   gap: 24px;
   margin-top: 48px;
 }
-.clinical-img-layout .img-placeholder { aspect-ratio: unset; margin-top: 0; min-height: 300px; }
-.clinical-img-layout .portfolio-img { max-height: 480px; }
+.clinical-img-layout .img-placeholder { aspect-ratio: unset; margin-top: 0; height: 420px; overflow: hidden; }
+.clinical-img-layout .portfolio-img { max-height: none; height: 100%; object-fit: cover; object-position: top; }
 
 /* Empty placeholder */
 .img-placeholder-empty {
@@ -754,8 +754,8 @@ body {
   </div>
   <div class="clinical-img-layout fade-in d5">
     <div class="img-placeholder"><img src="images/safety-infographic.png" alt="Clinical safety training infographic" class="portfolio-img"></div>
-    <div class="img-placeholder-empty"><span class="placeholder-label">Coming soon</span></div>
-    <div class="img-placeholder-empty"><span class="placeholder-label">Coming soon</span></div>
+    <div class="img-placeholder"><img src="images/image1_PE.jpg" alt="Phase Exam pass rate over time" class="portfolio-img"></div>
+    <div class="img-placeholder"><img src="images/simulator.png" alt="TCM intake interview simulator" class="portfolio-img"></div>
   </div>
 </section>
 
