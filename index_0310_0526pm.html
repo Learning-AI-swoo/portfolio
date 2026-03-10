@@ -79,13 +79,14 @@ body {
 .fade-in.d2 { transition-delay: 0.16s; }
 .fade-in.d3 { transition-delay: 0.24s; }
 .fade-in.d4 { transition-delay: 0.32s; }
+.fade-in.d5 { transition-delay: 0.40s; }
 
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 120px clamp(24px, 8vw, 120px) 80px;
+  padding: 120px clamp(24px, 8vw, 120px) 56px;
   position: relative;
   overflow: hidden;
 }
@@ -163,6 +164,20 @@ body {
   color: var(--accent-text); letter-spacing: 1px;
   padding: 6px 0; border-bottom: 1px solid var(--accent-border);
 }
+.scroll-indicator {
+  position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.scroll-indicator span {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 2px; color: #bbb; text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
 
 .impact-strip {
   padding: 0 clamp(24px, 8vw, 120px) 88px;
@@ -581,29 +596,17 @@ body {
   letter-spacing: 1px;
 }
 
-@media (max-width: 1100px) {
-  .impact-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
+
 @media (max-width: 980px) {
   .impact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .feature-grid { grid-template-columns: 1fr; }
   .feature-summary { grid-template-columns: 1fr; }
 }
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .section { padding: 84px 24px; }
-  .hero { padding: 100px 24px 52px; }
-  .impact-strip { padding: 0 24px 72px; }
-  .impact-grid { grid-template-columns: 1fr 1fr; }
-  .case-images, .case-images.three-col, .more-images { grid-template-columns: 1fr; }
-  .hero-actions, .closing-contact { gap: 12px; }
-}
 @media (max-width: 720px) {
   .impact-grid { grid-template-columns: 1fr; }
   .case-meta { grid-template-columns: 1fr; }
-}
-@media (max-width: 560px) {
-  .impact-grid { grid-template-columns: 1fr; }
+  .case-images, .case-images.three-col, .more-images { grid-template-columns: 1fr; }
+  .hero-actions, .closing-contact { gap: 12px; }
 }
 
 #lightbox {
@@ -622,6 +625,25 @@ body {
   max-height: 85vh;
   box-shadow: 0 8px 48px rgba(0,0,0,0.5);
   object-fit: contain;
+}
+
+@media (max-width: 1100px) {
+  .impact-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .case-meta { grid-template-columns: 1fr; }
+  .case-images.three-col { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .section { padding: 84px 24px; }
+  .hero { padding: 100px 24px 52px; }
+  .impact-strip { padding: 0 24px 72px; }
+  .impact-grid { grid-template-columns: 1fr 1fr; }
+  .case-images, .more-images { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .impact-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -668,6 +690,10 @@ body {
       <span class="hero-tag">AI Adoption</span>
     </div>
   </div>
+  <div class="scroll-indicator fade-in d5">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
 <section class="impact-strip">
@@ -688,7 +714,7 @@ body {
       <h2>3×</h2>
       <p>Enrollment growth after designing and launching a fully online professional doctoral program.</p>
     </div>
-    <div class="impact-item fade-in">
+    <div class="impact-item fade-in d5">
       <h2>30,000+</h2>
       <p>Professionals represented through national AI competency framework work with the NCCAOM AI Taskforce.</p>
     </div>
@@ -778,7 +804,7 @@ body {
           <div class="case-study-number">Case Study 02</div>
           <h3>Led institution-wide distance education infrastructure</h3>
           <p class="case-study-intro">Including NC-SARA participation and renewal systems, LMS-based distance education compliance, and the development of a fully online professional doctoral program.</p>
-          <p>I helped build VUIM's distance education infrastructure at the institutional level, including NC-SARA application and annual renewal processes, faculty-facing compliance systems, LMS-based engagement models, and the design of a fully online professional doctoral program aligned with ACAHM standards.</p>
+          <p>I helped build VUIM’s distance education infrastructure at the institutional level, including NC-SARA application and annual renewal processes, faculty-facing compliance systems, LMS-based engagement models, and the design of a fully online professional doctoral program aligned with ACAHM standards.</p>
 
           <div class="feature-summary">
             <div class="feature-summary-item">
@@ -813,8 +839,8 @@ body {
           </div>
 
           <div class="case-images">
-            <img src="images/doctoral-architecture.svg" alt="Online program architecture development" class="portfolio-img">
-            <img src="images/competency-alignment.svg" alt="Online program alignment" class="portfolio-img">
+            <img src="images/doctoral-architecture.svg" alt="online program architecture development" class="portfolio-img">
+            <img src="images/competency-alignment.svg" alt="Online Program alignment" class="portfolio-img">
           </div>
 
           <div class="case-phase">
@@ -825,7 +851,7 @@ body {
 
           <div class="honest-note">
             <div class="honest-note-label">Honest note</div>
-            <p>I led the program design and distance education structure, while the program's growth also depended on admissions, leadership support, and institutional follow-through. The strongest outcome was not only a new curriculum, but a structure the institution could use and scale.</p>
+            <p>I led the program design and distance education structure, while the program’s growth also depended on admissions, leadership support, and institutional follow-through. The strongest outcome was not only a new curriculum, but a structure the institution could use and scale.</p>
           </div>
         </div>
       </div>
@@ -866,8 +892,8 @@ body {
       <img src="images/powerbi-workflow.png" alt="Power BI workflow" class="portfolio-img">
       <img src="images/board-exam-charts.png" alt="Board exam charts" class="portfolio-img">
       <img src="images/clinic-data-workflow.svg" alt="Clinic data workflow" class="portfolio-img">
+      <p style="font-size:12px;color:#999;margin-top:8px;font-style:italic;">Power BI Dashboard screenshots from production environment — data anonymized for confidentiality.</p>
     </div>
-    <p style="font-size:12px;color:#999;margin-top:-28px;margin-bottom:40px;font-style:italic;">Dashboard screenshots from production environment — data anonymized for confidentiality.</p>
 
     <div class="case-phase">
       <div class="case-phase-label">Result</div>
@@ -939,7 +965,7 @@ body {
       <p>Built a portfolio of internal learning resources covering online learning readiness, faculty essentials, board exam preparation, AI literacy, and academic integrity.</p>
       <div class="more-images">
         <img src="images/image8.png" alt="Grade distribution analytics dashboard" class="portfolio-img">
-        <img src="images/faculty-newsletter.png" alt="Faculty teaching and learning newsletter" class="portfolio-img">
+        <img src="images/faculty-newsletter.png" alt="Faculty Newsletter" class="portfolio-img">
       </div>
     </div>
 
