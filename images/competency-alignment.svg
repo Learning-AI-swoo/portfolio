@@ -1,104 +1,104 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
   <defs>
-    <linearGradient id="tier1" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#1a1814"/>
-      <stop offset="100%" stop-color="#2a2520"/>
+    <linearGradient id="darkBg" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#141210"/>
+      <stop offset="100%" stop-color="#1a1814"/>
     </linearGradient>
-    <linearGradient id="tier2" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#3a3228"/>
-      <stop offset="100%" stop-color="#4a4038"/>
+    <linearGradient id="tier1dark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="rgba(200,148,60,0.12)"/>
+      <stop offset="100%" stop-color="rgba(200,148,60,0.06)"/>
     </linearGradient>
-    <linearGradient id="flowLine" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#c8943c"/>
-      <stop offset="100%" stop-color="#c8943c" stop-opacity="0.2"/>
+    <linearGradient id="tier3dark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="rgba(200,148,60,0.08)"/>
+      <stop offset="100%" stop-color="rgba(200,148,60,0.03)"/>
     </linearGradient>
   </defs>
 
   <!-- Background -->
-  <rect width="960" height="720" fill="#fefcf9"/>
+  <rect width="960" height="720" fill="url(#darkBg)"/>
 
   <!-- Title area -->
   <text x="480" y="42" text-anchor="middle" fill="#c8943c" font-size="11" letter-spacing="3" font-weight="500">CURRICULUM DESIGN FRAMEWORK</text>
-  <text x="480" y="72" text-anchor="middle" fill="#111" font-size="22" font-weight="600" letter-spacing="-0.5">Competency Alignment Model</text>
+  <text x="480" y="72" text-anchor="middle" fill="#f0ece6" font-size="22" font-weight="600" letter-spacing="-0.5">Competency Alignment Model</text>
 
-  <!-- TIER 1: ACAHM Competency Domains -->
-  <rect x="40" y="100" width="880" height="90" rx="4" fill="url(#tier1)"/>
+  <!-- TIER 1: Accreditation Competency Domains -->
+  <rect x="40" y="100" width="880" height="90" rx="4" fill="url(#tier1dark)" stroke="rgba(200,148,60,0.25)" stroke-width="1"/>
   <text x="60" y="126" fill="#c8943c" font-size="11" letter-spacing="2.5" font-weight="500">TIER 1</text>
   <text x="60" y="150" fill="#f0ece6" font-size="18" font-weight="600">Accreditation Competency Domains</text>
-  <text x="60" y="172" fill="#b6a999" font-size="13">National standards (ACAHM) defining doctoral-level professional competencies</text>
+  <text x="60" y="172" fill="#8a7e6e" font-size="13">National standards (ACAHM) defining doctoral-level professional competencies</text>
 
   <!-- Connector: Tier 1 → 2 -->
-  <line x1="480" y1="190" x2="480" y2="222" stroke="#c8943c" stroke-width="2" opacity="0.5"/>
-  <path d="M472,214 L480,226 L488,214" fill="none" stroke="#c8943c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+  <line x1="480" y1="190" x2="480" y2="218" stroke="#c8943c" stroke-width="1.5" opacity="0.45"/>
+  <path d="M473,212 L480,224 L487,212" fill="none" stroke="#c8943c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
 
   <!-- TIER 2: Program Objectives -->
-  <rect x="40" y="230" width="880" height="110" rx="4" fill="#f5f2ed" stroke="#e0d8ce" stroke-width="1"/>
+  <rect x="40" y="230" width="880" height="110" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(200,148,60,0.12)" stroke-width="1"/>
   <text x="60" y="258" fill="#c8943c" font-size="11" letter-spacing="2.5" font-weight="500">TIER 2</text>
-  <text x="60" y="282" fill="#111" font-size="18" font-weight="600">Program Objectives</text>
-  <text x="60" y="304" fill="#777" font-size="13">Translated from competency domains into measurable doctoral program goals</text>
+  <text x="60" y="282" fill="#f0ece6" font-size="18" font-weight="600">Program Objectives</text>
+  <text x="60" y="304" fill="#8a7e6e" font-size="13">Translated from competency domains into measurable doctoral program goals</text>
 
   <!-- Example objectives -->
-  <rect x="60" y="316" width="6" height="6" rx="1" fill="#c8943c" opacity="0.6"/>
-  <text x="76" y="323" fill="#444" font-size="12">Clinical reasoning across specialties</text>
-  <rect x="310" y="316" width="6" height="6" rx="1" fill="#c8943c" opacity="0.6"/>
-  <text x="326" y="323" fill="#444" font-size="12">Evidence-based practice leadership</text>
-  <rect x="580" y="316" width="6" height="6" rx="1" fill="#c8943c" opacity="0.6"/>
-  <text x="596" y="323" fill="#444" font-size="12">Interprofessional collaboration</text>
+  <rect x="60" y="316" width="6" height="6" rx="1" fill="#c8943c" opacity="0.5"/>
+  <text x="76" y="323" fill="#b6a999" font-size="12">Clinical reasoning across specialties</text>
+  <rect x="310" y="316" width="6" height="6" rx="1" fill="#c8943c" opacity="0.5"/>
+  <text x="326" y="323" fill="#b6a999" font-size="12">Evidence-based practice leadership</text>
+  <rect x="580" y="316" width="6" height="6" rx="1" fill="#c8943c" opacity="0.5"/>
+  <text x="596" y="323" fill="#b6a999" font-size="12">Interprofessional collaboration</text>
 
   <!-- Connector: Tier 2 → 3 -->
-  <line x1="480" y1="340" x2="480" y2="372" stroke="#c8943c" stroke-width="2" opacity="0.5"/>
-  <path d="M472,364 L480,376 L488,364" fill="none" stroke="#c8943c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+  <line x1="480" y1="340" x2="480" y2="368" stroke="#c8943c" stroke-width="1.5" opacity="0.45"/>
+  <path d="M473,362 L480,374 L487,362" fill="none" stroke="#c8943c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
 
   <!-- TIER 3: Course-Level Learning Outcomes -->
-  <rect x="40" y="380" width="880" height="110" rx="4" fill="#fff9f0" stroke="#c8943c" stroke-width="1" opacity="0.9"/>
+  <rect x="40" y="380" width="880" height="110" rx="4" fill="url(#tier3dark)" stroke="rgba(200,148,60,0.18)" stroke-width="1"/>
   <text x="60" y="408" fill="#c8943c" font-size="11" letter-spacing="2.5" font-weight="500">TIER 3</text>
-  <text x="60" y="432" fill="#111" font-size="18" font-weight="600">Course-Level Learning Outcomes</text>
-  <text x="60" y="454" fill="#777" font-size="13">Specific, assessable outcomes mapped to program objectives within each course</text>
+  <text x="60" y="432" fill="#f0ece6" font-size="18" font-weight="600">Course-Level Learning Outcomes</text>
+  <text x="60" y="454" fill="#8a7e6e" font-size="13">Specific, assessable outcomes mapped to program objectives within each course</text>
 
   <!-- Example CLOs -->
-  <rect x="60" y="466" width="6" height="6" rx="1" fill="#c8943c" opacity="0.6"/>
-  <text x="76" y="473" fill="#444" font-size="12">Analyze complex patient presentations</text>
-  <rect x="310" y="466" width="6" height="6" rx="1" fill="#c8943c" opacity="0.6"/>
-  <text x="326" y="473" fill="#444" font-size="12">Evaluate treatment protocols</text>
-  <rect x="580" y="466" width="6" height="6" rx="1" fill="#c8943c" opacity="0.6"/>
-  <text x="596" y="473" fill="#444" font-size="12">Design integrative care plans</text>
+  <rect x="60" y="466" width="6" height="6" rx="1" fill="#c8943c" opacity="0.5"/>
+  <text x="76" y="473" fill="#b6a999" font-size="12">Analyze complex patient presentations</text>
+  <rect x="310" y="466" width="6" height="6" rx="1" fill="#c8943c" opacity="0.5"/>
+  <text x="326" y="473" fill="#b6a999" font-size="12">Evaluate treatment protocols</text>
+  <rect x="580" y="466" width="6" height="6" rx="1" fill="#c8943c" opacity="0.5"/>
+  <text x="596" y="473" fill="#b6a999" font-size="12">Design integrative care plans</text>
 
   <!-- Connector: Tier 3 → 4 -->
-  <line x1="480" y1="490" x2="480" y2="522" stroke="#c8943c" stroke-width="2" opacity="0.5"/>
-  <path d="M472,514 L480,526 L488,514" fill="none" stroke="#c8943c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+  <line x1="480" y1="490" x2="480" y2="518" stroke="#c8943c" stroke-width="1.5" opacity="0.45"/>
+  <path d="M473,512 L480,524 L487,512" fill="none" stroke="#c8943c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
 
   <!-- TIER 4: Online Learning Activities -->
-  <rect x="40" y="530" width="880" height="148" rx="4" fill="#f5f2ed" stroke="#e0d8ce" stroke-width="1"/>
+  <rect x="40" y="530" width="880" height="148" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(200,148,60,0.12)" stroke-width="1"/>
   <text x="60" y="558" fill="#c8943c" font-size="11" letter-spacing="2.5" font-weight="500">TIER 4</text>
-  <text x="60" y="582" fill="#111" font-size="18" font-weight="600">Online Learning Activities</text>
-  <text x="60" y="604" fill="#777" font-size="13">Designed for both synchronous and asynchronous delivery with documented clock-hour compliance</text>
+  <text x="60" y="582" fill="#f0ece6" font-size="18" font-weight="600">Online Learning Activities</text>
+  <text x="60" y="604" fill="#8a7e6e" font-size="13">Designed for both synchronous and asynchronous delivery with documented clock-hour compliance</text>
 
   <!-- Activity cards -->
-  <rect x="60" y="620" width="185" height="42" rx="3" fill="#fefcf9" stroke="#e0d8ce" stroke-width="1"/>
-  <rect x="64" y="624" width="3" height="34" rx="1.5" fill="#c8943c" opacity="0.6"/>
-  <text x="78" y="646" fill="#111" font-size="13" font-weight="500">Case Analysis Forums</text>
+  <rect x="60" y="620" width="185" height="42" rx="3" fill="rgba(200,148,60,0.06)" stroke="rgba(200,148,60,0.2)" stroke-width="1"/>
+  <rect x="64" y="624" width="3" height="34" rx="1.5" fill="#c8943c" opacity="0.5"/>
+  <text x="78" y="646" fill="#f0ece6" font-size="13" font-weight="500">Case Analysis Forums</text>
 
-  <rect x="262" y="620" width="185" height="42" rx="3" fill="#fefcf9" stroke="#e0d8ce" stroke-width="1"/>
-  <rect x="266" y="624" width="3" height="34" rx="1.5" fill="#c8943c" opacity="0.6"/>
-  <text x="280" y="646" fill="#111" font-size="13" font-weight="500">Virtual Rounds</text>
+  <rect x="262" y="620" width="185" height="42" rx="3" fill="rgba(200,148,60,0.06)" stroke="rgba(200,148,60,0.2)" stroke-width="1"/>
+  <rect x="266" y="624" width="3" height="34" rx="1.5" fill="#c8943c" opacity="0.5"/>
+  <text x="280" y="646" fill="#f0ece6" font-size="13" font-weight="500">Virtual Rounds</text>
 
-  <rect x="464" y="620" width="185" height="42" rx="3" fill="#fefcf9" stroke="#e0d8ce" stroke-width="1"/>
-  <rect x="468" y="624" width="3" height="34" rx="1.5" fill="#c8943c" opacity="0.6"/>
-  <text x="482" y="646" fill="#111" font-size="13" font-weight="500">Peer Collaboration</text>
+  <rect x="464" y="620" width="185" height="42" rx="3" fill="rgba(200,148,60,0.06)" stroke="rgba(200,148,60,0.2)" stroke-width="1"/>
+  <rect x="468" y="624" width="3" height="34" rx="1.5" fill="#c8943c" opacity="0.5"/>
+  <text x="482" y="646" fill="#f0ece6" font-size="13" font-weight="500">Peer Collaboration</text>
 
-  <rect x="666" y="620" width="235" height="42" rx="3" fill="#fefcf9" stroke="#e0d8ce" stroke-width="1"/>
-  <rect x="670" y="624" width="3" height="34" rx="1.5" fill="#c8943c" opacity="0.6"/>
-  <text x="684" y="646" fill="#111" font-size="13" font-weight="500">Research Article Reviews</text>
+  <rect x="666" y="620" width="235" height="42" rx="3" fill="rgba(200,148,60,0.06)" stroke="rgba(200,148,60,0.2)" stroke-width="1"/>
+  <rect x="670" y="624" width="3" height="34" rx="1.5" fill="#c8943c" opacity="0.5"/>
+  <text x="684" y="646" fill="#f0ece6" font-size="13" font-weight="500">Research Article Reviews</text>
 
   <!-- Right-side alignment indicator -->
-  <line x1="920" y1="100" x2="920" y2="678" stroke="#c8943c" stroke-width="1" stroke-dasharray="4,6" opacity="0.2"/>
+  <line x1="920" y1="100" x2="920" y2="678" stroke="#c8943c" stroke-width="1" stroke-dasharray="4,6" opacity="0.15"/>
 
   <!-- Right side labels -->
-  <text x="940" y="150" fill="#c8943c" font-size="10" letter-spacing="1" opacity="0.6" transform="rotate(90, 940, 150)">ACCREDITATION</text>
-  <text x="940" y="430" fill="#c8943c" font-size="10" letter-spacing="1" opacity="0.6" transform="rotate(90, 940, 430)">INSTRUCTION</text>
-  <text x="940" y="610" fill="#c8943c" font-size="10" letter-spacing="1" opacity="0.6" transform="rotate(90, 940, 610)">DELIVERY</text>
+  <text x="940" y="150" fill="#c8943c" font-size="10" letter-spacing="1" opacity="0.45" transform="rotate(90, 940, 150)">ACCREDITATION</text>
+  <text x="940" y="430" fill="#c8943c" font-size="10" letter-spacing="1" opacity="0.45" transform="rotate(90, 940, 430)">INSTRUCTION</text>
+  <text x="940" y="610" fill="#c8943c" font-size="10" letter-spacing="1" opacity="0.45" transform="rotate(90, 940, 610)">DELIVERY</text>
 
   <!-- Footer -->
-  <line x1="40" y1="698" x2="920" y2="698" stroke="#e0d8ce" stroke-width="1"/>
-  <text x="480" y="714" text-anchor="middle" fill="#b6a999" font-size="11">Each tier maps directly to the one above — ensuring alignment from national standards to student experience</text>
+  <line x1="40" y1="698" x2="920" y2="698" stroke="rgba(200,148,60,0.15)" stroke-width="1"/>
+  <text x="480" y="714" text-anchor="middle" fill="#8a7e6e" font-size="11">Each tier maps directly to the one above — ensuring alignment from national standards to student experience</text>
 </svg>
