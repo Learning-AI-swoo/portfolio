@@ -64,54 +64,6 @@ body {
 }
 .nav-link:hover { color: var(--accent); }
 
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  z-index: 200;
-}
-.nav-toggle span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--heading);
-  margin: 5px 0;
-  transition: all 0.3s ease;
-}
-.nav-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.nav-toggle.active span:nth-child(2) { opacity: 0; }
-.nav-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-.mobile-menu {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(254,252,249,0.97);
-  backdrop-filter: blur(20px);
-  z-index: 150;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 36px;
-}
-.mobile-menu.active { display: flex; }
-.mobile-menu a {
-  font-family: 'DM Mono', monospace;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--heading);
-  text-decoration: none;
-  padding: 8px 0;
-  transition: color 0.3s;
-}
-.mobile-menu a:hover { color: var(--accent); }
-
 .section-label {
   font-family: 'DM Mono', monospace;
   font-size: 11px; letter-spacing: 3px;
@@ -639,7 +591,6 @@ body {
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  .nav-toggle { display: block; }
   .section { padding: 84px 24px; }
   .hero { padding: 100px 24px 52px; }
   .impact-strip { padding: 0 24px 72px; }
@@ -688,17 +639,7 @@ body {
     <a href="#more" class="nav-link">More Work</a>
     <a href="#skills" class="nav-link">Skills</a>
   </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#cases">Case Studies</a>
-  <a href="#approach">How I Work</a>
-  <a href="#more">More Work</a>
-  <a href="#skills">Skills</a>
-</div>
 
 <section class="hero" id="hero">
   <div class="hero-glow"></div>
@@ -808,51 +749,86 @@ body {
     </div>
   </div>
 
-  <div class="case-study fade-in">
-    <div class="feature-badge" style="margin-bottom:18px;">Flagship Project</div>
-    <div class="case-study-number">Case Study 02</div>
-    <h3>Led institution-wide distance education infrastructure and online doctoral program</h3>
-    <p class="case-study-intro">VUIM needed distance education systems that could scale across three campuses, stay compliant with NC-SARA and ACAHM, and support a fully online professional doctoral program.</p>
-
-    <div class="case-meta">
-      <div class="case-meta-card">
-        <h4>My role</h4>
-        <p>Lead instructional designer, compliance architect, and program development partner.</p>
+  <div class="case-study feature fade-in">
+    <div class="feature-shell">
+      <div class="feature-topline">
+        <div class="feature-badge">Flagship Project</div>
+        <div class="feature-badge">Institution-wide systems design</div>
       </div>
-      <div class="case-meta-card">
-        <h4>Scope</h4>
-        <p>NC-SARA participation and renewal, LMS engagement design, fully online doctoral curriculum architecture, and faculty implementation support.</p>
+
+      <div class="feature-grid">
+        <aside class="feature-sidebar">
+          <div class="case-meta stacked">
+            <div class="case-meta-card">
+              <h4>My role</h4>
+              <p>Lead instructional designer, compliance architect, and program development partner.</p>
+            </div>
+            <div class="case-meta-card">
+              <h4>Scope</h4>
+              <p>Institution-wide distance education infrastructure, NC-SARA participation and renewal, fully online doctoral curriculum architecture, accreditation alignment, LMS engagement design, and faculty implementation support.</p>
+            </div>
+            <div class="case-meta-card">
+              <h4>What I owned</h4>
+              <p>Market review, curriculum architecture, ACAHM competency mapping, objective alignment, online learning activity models, LMS engagement design, faculty guidance, compliance documentation, and reporting support.</p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="feature-content">
+          <div class="case-study-number">Case Study 02</div>
+          <h3>Led institution-wide distance education infrastructure</h3>
+          <p class="case-study-intro">Including NC-SARA participation and renewal systems, LMS-based distance education compliance, and the development of a fully online professional doctoral program.</p>
+          <p>I helped build VUIM's distance education infrastructure at the institutional level, including NC-SARA application and annual renewal processes, faculty-facing compliance systems, LMS-based engagement models, and the design of a fully online professional doctoral program aligned with ACAHM standards.</p>
+
+          <div class="feature-summary">
+            <div class="feature-summary-item">
+              <h4>Institutional frame</h4>
+              <p>NC-SARA participation, annual renewal, LMS engagement expectations, and faculty-facing implementation structure.</p>
+            </div>
+            <div class="feature-summary-item">
+              <h4>Program frame</h4>
+              <p>Fully online doctoral redesign aligned to ACAHM competency domains and national recruitment goals.</p>
+            </div>
+            <div class="feature-summary-item">
+              <h4>Learning frame</h4>
+              <p>Synchronous and asynchronous models built around clinical reasoning, case work, and documented clock-hour logic.</p>
+            </div>
+            <div class="feature-summary-item">
+              <h4>Scale</h4>
+              <p>Distance education systems supporting 600+ courses and 2,000+ annual course enrollments.</p>
+            </div>
+          </div>
+
+          <div class="case-phase">
+            <div class="case-phase-label">Problem</div>
+            <p>VUIM needed to expand distance education capacity while maintaining compliance with accreditation and regulatory requirements. This included NC-SARA participation, annual renewal, and more reliable distance education systems for faculty and students.</p>
+            <p>At the same time, the existing doctoral pathway needed redesign. The institution wanted a stronger program for national recruitment, but it needed clearer focus, tighter alignment with ACAHM doctoral competencies, and an online delivery model that could support clinical reasoning and professional development in a credible way.</p>
+          </div>
+
+          <div class="case-phase">
+            <div class="case-phase-label">Approach</div>
+            <p>I helped build the institutional systems that made distance education more stable and repeatable. That included support structures for faculty, clearer online course expectations, LMS-based engagement guidance, compliance documentation, and recurring processes tied to NC-SARA participation and annual renewal.</p>
+            <p>For the doctoral program, I moved the work from idea to architecture. I conducted early market review, helped shape the decision to pursue a fully online model, and used ACAHM competency standards as the organizing frame for development. From there, I helped define four core clinical focus areas, mapped program objectives to competency domains, aligned course-level outcomes, and designed online learning models that could support both academic quality and clock-hour compliance.</p>
+            <p>I also worked with subject matter experts to develop course materials and online learning activities, including synchronous and asynchronous structures, case analysis forums, research review, collaborative learning tasks, and virtual clinical experience models. To support review and implementation, I documented how these activities align with LMS-based engagement expectations and distance education requirements.</p>
+          </div>
+
+          <div class="case-images">
+            <img src="images/doctoral-architecture.svg" alt="Online program architecture development" class="portfolio-img">
+            <img src="images/competency-alignment.svg" alt="Online program alignment" class="portfolio-img">
+          </div>
+
+          <div class="case-phase">
+            <div class="case-phase-label">Result</div>
+            <p>The resulting infrastructure now supports more than 600 courses and 2,000 annual course enrollments. It also gave the institution a more durable framework for distance education compliance, faculty implementation, and ongoing NC-SARA participation.</p>
+            <p>The doctoral redesign produced a fully online professional pathway with competency-aligned curriculum, mapped objectives, documented learning models, and stronger faculty guidance. Enrollment grew from fewer than 20 students per term to more than 60 after launch.</p>
+          </div>
+
+          <div class="honest-note">
+            <div class="honest-note-label">Honest note</div>
+            <p>I led the program design and distance education structure, while the program's growth also depended on admissions, leadership support, and institutional follow-through. The strongest outcome was not only a new curriculum, but a structure the institution could use and scale.</p>
+          </div>
+        </div>
       </div>
-      <div class="case-meta-card">
-        <h4>What I owned</h4>
-        <p>Curriculum architecture, ACAHM competency mapping, online learning activity models, compliance documentation, and faculty guidance.</p>
-      </div>
-    </div>
-
-    <div class="case-phase">
-      <div class="case-phase-label">Problem</div>
-      <p>The institution had no unified distance education infrastructure. NC-SARA participation, annual renewal, and faculty-facing compliance systems all needed to be built. At the same time, the existing doctoral pathway had low enrollment. Leadership wanted a fully online model that could recruit nationally that is also in alignment with the competency standards.</p>
-    </div>
-
-    <div class="case-phase">
-      <div class="case-phase-label">Approach</div>
-      <p>I built the institutional layer first: LMS engagement expectations, compliance documentation, recurring NC-SARA processes, and faculty support structures. These gave the school a foundation for running distance education at scale.</p>
-      <p>For the doctoral program, I conducted market review, defined four clinical focus areas, and used ACAHM competency domains as the organizing frame. I mapped program objectives to competency domains, aligned course-level outcomes, and designed learning models (synchronous sessions, case analysis forums, research review, virtual clinical experiences) that could meet both academic quality and clock-hour requirements. I worked with subject matter experts throughout to shape course content and activities.</p>
-    </div>
-
-    <div class="case-images">
-      <img src="images/doctoral-architecture.svg" alt="Online program architecture development" class="portfolio-img">
-      <img src="images/competency-alignment.svg" alt="Online program alignment" class="portfolio-img">
-    </div>
-
-    <div class="case-phase">
-      <div class="case-phase-label">Result</div>
-      <p>The infrastructure now supports 600+ courses and 2,000+ annual course enrollments across three campuses. The doctoral program grew from fewer than 20 students per term to more than 60 after launch.</p>
-    </div>
-
-    <div class="honest-note">
-      <div class="honest-note-label">Honest note</div>
-      <p>I led the program design and distance education structure. The enrollment growth also depended on admissions effort, leadership support, and institutional follow-through. The strongest outcome was a reusable structure the institution could scale beyond this one program.</p>
     </div>
   </div>
 
@@ -891,7 +867,7 @@ body {
       <img src="images/board-exam-charts.png" alt="Board exam charts" class="portfolio-img">
       <img src="images/clinic-data-workflow.svg" alt="Clinic data workflow" class="portfolio-img">
     </div>
-    <p style="font-size:12px;color:#999;margin-top:-28px;margin-bottom:40px;font-style:italic;">Dashboard screenshots from production environment. Data anonymized for confidentiality.</p>
+    <p style="font-size:12px;color:#999;margin-top:-28px;margin-bottom:40px;font-style:italic;">Dashboard screenshots from production environment — data anonymized for confidentiality.</p>
 
     <div class="case-phase">
       <div class="case-phase-label">Result</div>
@@ -1025,21 +1001,6 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 100);
 }, { passive: true });
 
-const toggle = document.getElementById('navToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-toggle.addEventListener('click', () => {
-  toggle.classList.toggle('active');
-  mobileMenu.classList.toggle('active');
-  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-});
-mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    toggle.classList.remove('active');
-    mobileMenu.classList.remove('active');
-    document.body.style.overflow = '';
-  });
-});
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1061,6 +1022,13 @@ lightbox.addEventListener('click', () => {
   lightbox.classList.remove('active');
   document.body.style.overflow = '';
 });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
 </script>
+
 </body>
 </html>
