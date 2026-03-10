@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sung Woo — Learning Systems & Innovation Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: #fefcf9;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection { background: rgba(200,148,60,0.3); color: #111; }
+
+/* ========== CSS VARIABLES ========== */
+:root {
+  --accent: #c8943c;
+  --accent-light: rgba(200,148,60,0.12);
+  --accent-border: rgba(200,148,60,0.4);
+  --accent-text: #9a7020;
+  --tag-text: #8a6518;
+  --dark-bg: #0e0e0e;
+  --dark-bg2: #1a1814;
+  --dark-text: #f0ece6;
+  --dark-muted: #908070;
+  --light-bg: #fefcf9;
+  --light-bg2: #f5f2ed;
+  --heading: #111;
+  --body: #444;
+  --muted: #777;
+  --border: #e0d8ce;
+}
+
+/* ========== NAV ========== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 clamp(24px, 4vw, 64px);
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.4s ease;
+}
+.nav.scrolled {
+  background: rgba(254,252,249,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(200,148,60,0.15);
+}
+.nav-logo {
+  font-family: 'Source Serif 4', serif;
+  font-size: 18px; font-weight: 600; color: var(--heading);
+  cursor: pointer; text-decoration: none; letter-spacing: -0.3px;
+}
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-link {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted); background: none; border: none;
+  cursor: pointer; padding: 4px 0; transition: color 0.3s;
+  text-decoration: none;
+}
+.nav-link:hover { color: var(--accent); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+}
+
+/* ========== SECTION LABEL ========== */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent);
+}
+
+/* ========== FADE IN ========== */
+.fade-in {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.fade-in.visible { opacity: 1; transform: none; }
+.fade-in.d1 { transition-delay: 0.1s; }
+.fade-in.d2 { transition-delay: 0.2s; }
+.fade-in.d3 { transition-delay: 0.3s; }
+.fade-in.d4 { transition-delay: 0.4s; }
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 120px clamp(24px, 8vw, 120px) 80px;
+  position: relative; overflow: hidden;
+}
+.hero-glow {
+  position: absolute; top: -20%; right: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(200,148,60,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-line {
+  position: absolute; bottom: 10%; left: 5%;
+  width: 1px; height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+  opacity: 0.4;
+}
+.hero h1 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(48px, 8vw, 96px); font-weight: 700;
+  color: var(--heading); line-height: 1.05;
+  margin-top: 24px; margin-bottom: 32px;
+  letter-spacing: -2px; max-width: 900px;
+}
+.hero-desc {
+  font-size: clamp(18px, 2.5vw, 22px); font-weight: 300;
+  color: var(--body); line-height: 1.7;
+  max-width: 620px; margin-bottom: 8px;
+}
+.hero-highlight {
+  font-size: clamp(17px, 2vw, 20px); font-weight: 500;
+  color: var(--heading); line-height: 1.6;
+  max-width: 620px; margin-bottom: 32px;
+  font-family: 'DM Sans', sans-serif;
+}
+.hero-tags { display: flex; gap: 24px; flex-wrap: wrap; }
+.hero-tag {
+  font-family: 'DM Mono', monospace; font-size: 12px;
+  color: var(--accent-text); letter-spacing: 1px;
+  padding: 6px 0; border-bottom: 1px solid var(--accent-border);
+}
+.scroll-indicator {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.scroll-indicator span {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 2px; color: #bbb; text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* ========== SECTIONS ========== */
+.section { padding: 120px clamp(24px, 8vw, 120px); }
+.section-border { border-top: 1px solid var(--border); }
+.section-alt { background: var(--light-bg2); }
+.section-dark {
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg2) 100%);
+  color: var(--dark-text);
+}
+.section h2 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(32px, 5vw, 52px); font-weight: 700;
+  margin-top: 16px; margin-bottom: 64px; letter-spacing: -1px;
+}
+.section-dark h2 { color: var(--dark-text); }
+
+/* ========== PRINCIPLES ========== */
+.principle {
+  border-top: 1px solid var(--accent-border);
+  padding-top: 32px;
+  margin-bottom: 56px;
+}
+.principle h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 24px; font-weight: 700;
+  color: var(--dark-text); margin-bottom: 16px;
+}
+.principle p {
+  font-size: 16px; color: var(--dark-muted); line-height: 1.8;
+  max-width: 720px;
+}
+.principle p + p { margin-top: 16px; }
+.principle-examples {
+  margin-top: 20px; padding: 20px 24px;
+  background: rgba(200,148,60,0.06);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 2px 2px 0;
+}
+.principle-examples p {
+  font-size: 15px; color: var(--dark-muted); line-height: 1.7;
+  font-style: italic;
+}
+.principle-story {
+  margin-top: 24px; padding: 28px 28px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(200,148,60,0.2);
+  border-radius: 2px;
+}
+.principle-story-label {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.principle-story p {
+  font-size: 15px; color: var(--dark-muted); line-height: 1.8;
+}
+
+/* ========== CASE STUDIES ========== */
+.case-study {
+  margin-bottom: 96px;
+  padding-bottom: 96px;
+  border-bottom: 1px solid var(--border);
+}
+.case-study:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.case-study-number {
+  font-family: 'DM Mono', monospace; font-size: 12px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.case-study h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(24px, 3.5vw, 36px); font-weight: 700;
+  color: var(--heading); margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.case-study-intro {
+  font-size: 16px; color: var(--muted); line-height: 1.6;
+  margin-bottom: 48px; max-width: 640px;
+}
+
+.case-phase {
+  margin-bottom: 32px;
+}
+.case-phase-label {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--accent-border);
+  display: inline-block;
+}
+.case-phase p {
+  font-size: 16px; color: var(--body); line-height: 1.8;
+  max-width: 720px;
+}
+.case-phase p + p { margin-top: 16px; }
+.case-phase ul {
+  margin-top: 12px; padding-left: 20px;
+  max-width: 720px;
+}
+.case-phase ul li {
+  font-size: 15px; color: var(--body); line-height: 1.7;
+  margin-bottom: 6px;
+}
+
+.case-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.case-images.three-col {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.case-images.single-col {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+}
+
+.honest-note {
+  margin-top: 40px;
+  padding: 28px 28px;
+  background: var(--light-bg2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 2px 2px 0;
+}
+.honest-note-label {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.honest-note p {
+  font-size: 15px; color: var(--body); line-height: 1.8;
+  max-width: 680px;
+}
+
+/* ========== MORE WORK ========== */
+.more-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 48px;
+}
+.more-category {
+  border-top: 1px solid var(--accent-border);
+  padding-top: 24px;
+}
+.more-category h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 20px; font-weight: 600;
+  color: var(--dark-text); margin-bottom: 20px;
+}
+.more-item {
+  margin-bottom: 16px;
+}
+.more-item p {
+  font-size: 15px; color: var(--dark-muted); line-height: 1.7;
+}
+.more-item strong { color: var(--dark-text); font-weight: 500; }
+.more-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* ========== IMAGES ========== */
+.portfolio-img {
+  width: 100%; border-radius: 2px;
+  display: block;
+  border: 1px solid var(--border);
+  cursor: zoom-in;
+  max-height: 340px;
+  object-fit: cover;
+  object-position: top;
+  transition: opacity 0.2s ease;
+}
+.portfolio-img:hover { opacity: 0.85; }
+.section-dark .portfolio-img { border-color: rgba(200,148,60,0.2); }
+.section-alt .portfolio-img { border-color: var(--border); }
+
+/* ========== SKILLS ========== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 48px; margin-bottom: 96px;
+}
+.skill-category { border-top: 1px solid var(--accent-border); padding-top: 24px; }
+.skill-category h3 {
+  font-family: 'Source Serif 4', serif;
+  font-size: 20px; font-weight: 600;
+  color: var(--heading); margin-bottom: 16px;
+}
+.skill-category p {
+  font-size: 14px; color: var(--body); line-height: 1.8;
+}
+
+/* ========== CLOSING ========== */
+.closing {
+  border-top: 1px solid rgba(200,148,60,0.2);
+  padding-top: 64px; max-width: 700px;
+}
+.closing-quote {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(20px, 3vw, 28px); font-weight: 400;
+  color: var(--dark-text); line-height: 1.7; margin-bottom: 48px;
+  border-left: 3px solid var(--accent); padding-left: 24px;
+}
+.closing-name {
+  font-family: 'Source Serif 4', serif;
+  font-size: 28px; font-weight: 700; color: var(--dark-text);
+}
+.closing-title {
+  font-size: 15px; color: var(--dark-muted); margin-top: 8px;
+}
+.closing-cred {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px; color: var(--accent); margin-top: 12px;
+}
+.closing-contact {
+  margin-top: 32px;
+  display: flex; gap: 24px; flex-wrap: wrap;
+}
+.closing-contact a {
+  font-family: 'DM Mono', monospace;
+  font-size: 14px; color: var(--dark-text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+.closing-contact a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  margin-top: 120px; padding-top: 32px;
+  border-top: 1px solid rgba(200,148,60,0.1);
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer span {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: #666; letter-spacing: 1px;
+}
+
+/* ========== LIGHTBOX ========== */
+#lightbox {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75); z-index: 9999;
+  align-items: center; justify-content: center;
+  cursor: zoom-out;
+}
+#lightbox.active { display: flex; }
+#lightbox-img {
+  max-width: min(900px, 90vw); max-height: 85vh;
+  border-radius: 4px; box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+  object-fit: contain;
+}
+
+/* ========== TAGS ========== */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.tag {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  padding: 4px 12px; background: var(--accent-light);
+  color: var(--tag-text); border-radius: 1px; letter-spacing: 0.5px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .section { padding: 80px 24px; }
+  .case-images { grid-template-columns: 1fr; }
+  .case-images.three-col { grid-template-columns: 1fr; }
+  .more-grid { grid-template-columns: 1fr; }
+  .more-images { grid-template-columns: 1fr; }
+  .hero { padding: 100px 24px 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a href="#hero" class="nav-logo">SW</a>
+  <div class="nav-links">
+    <a href="#approach" class="nav-link">Approach</a>
+    <a href="#cases" class="nav-link">Case Studies</a>
+    <a href="#more" class="nav-link">More Work</a>
+    <a href="#skills" class="nav-link">Skills</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-line"></div>
+
+  <div class="fade-in d1">
+    <span class="section-label">Learning Systems &amp; Innovation Portfolio</span>
+  </div>
+  <div class="fade-in d2">
+    <h1>Sung Woo</h1>
+  </div>
+  <div class="fade-in d3">
+    <p class="hero-desc">
+      I build learning systems from scratch — asking what the real problem is before reaching for a solution. A decade of building data-driven L&amp;D functions across healthcare education, AI integration, and institutional change.
+    </p>
+    <p class="hero-highlight">
+      Three innovation centers founded. None of them were asked for. All of them were needed.
+    </p>
+  </div>
+  <div class="fade-in d4">
+    <div class="hero-tags">
+      <span class="hero-tag">Curriculum Development</span>
+      <span class="hero-tag">AI-Enhanced Learning</span>
+      <span class="hero-tag">Learning Analytics</span>
+      <span class="hero-tag">Institutional Innovation</span>
+    </div>
+  </div>
+  <div class="scroll-indicator fade-in d4">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ==================== APPROACH ==================== -->
+<section class="section section-dark" id="approach">
+  <div class="fade-in">
+    <span class="section-label">How I Think</span>
+    <h2>Three principles</h2>
+  </div>
+
+  <div class="principle fade-in d1">
+    <h3>Remove logistical friction, not intellectual friction</h3>
+    <p>There are two kinds of struggle in learning. One is productive: a student wrestling with a complex clinical concept, building understanding through effort. That's the learning. You don't remove that. The other is just friction. Confusing instructions, clunky navigation, unclear rubrics. That's wasted energy with no learning value.</p>
+    <p>Technology should eliminate the second kind so learners can focus on the first. That's the logic behind everything I build.</p>
+    <div class="principle-examples">
+      <p>An AI chatbot for async courses so students get answers at 2am. Clinical readiness modules so interns aren't anxious about protocols before day one. Online learning readiness resources so students struggle with content, not the platform.</p>
+    </div>
+  </div>
+
+  <div class="principle fade-in d2">
+    <h3>What's the actual problem?</h3>
+    <p>Technology is often the right answer, but only when it's actually the problem. When the root cause is structural, a technical solution just papers over it.</p>
+    <div class="principle-story">
+      <div class="principle-story-label">A real example</div>
+      <p>We have multiple campuses, each with its own culture and community profile. At one campus, there was a language barrier in clinical internships. Many faculty and patients shared a primary language that some interns didn't speak. The initial push was to find a HIPAA-compliant medical translator tool. I did the market research. We were ready to implement.</p>
+      <p>But it didn't address the root cause. The problem wasn't translation. We didn't have enough linguistically diverse faculty or a broad enough patient base at that site. A translation app doesn't fix a community gap. The real solution was hiring and outreach. That's working. Slowly, but it's addressing the actual problem.</p>
+      <p>Now I always ask: what's the actual problem here? Is technology the right solution, or are we treating symptoms?</p>
+    </div>
+  </div>
+
+  <div class="principle fade-in d3">
+    <h3>Build capacity, not dependency</h3>
+    <p>My job isn't just solving problems. It's helping people grow confident enough to solve them themselves. Templates, tutorials, support sessions. The goal is always self-sufficiency. With students, I don't teach which buttons to click. I teach how to evaluate tools critically, so when new ones emerge, they can figure it out.</p>
+  </div>
+</section>
+
+<!-- ==================== CASE STUDIES ==================== -->
+<section class="section section-border" id="cases">
+  <div class="fade-in">
+    <span class="section-label">Selected Work</span>
+    <h2>Case studies</h2>
+  </div>
+
+  <!-- CASE 1: AI LITERACY -->
+  <div class="case-study fade-in">
+    <div class="case-study-number">Case Study 01</div>
+    <h3>Building AI Literacy from Zero</h3>
+    <p class="case-study-intro">AI Integration &amp; Educational Innovation — From institutional policy to faculty readiness to student competency, I addressed all three layers.</p>
+
+    <div class="case-phase">
+      <div class="case-phase-label">Problem</div>
+      <p>When AI took off, VUIM was in the same boat as every other school. Students were already using it. Faculty weren't sure what to do. No policy, no guidance, no structured way to build competency.</p>
+    </div>
+
+    <div class="case-phase">
+      <div class="case-phase-label">Approach</div>
+      <p>Step one was working with the curriculum committee to create an institutional AI policy. Simple bottom line: AI shouldn't replace learning. Using AI is like getting help from a colleague: you give credit, you disclose it.</p>
+      <p>But policy alone doesn't build skills. For healthcare students especially, the real risk isn't that they'll use AI. It's that they'll use it without critical thinking. They'll take a ChatGPT output about a diagnosis at face value.</p>
+      <p>So I designed a 10-week blended AI Literacy course built around Anthropic's 4D Framework (Discover, Discern, Design, Delegate). 6 synchronous Zoom sessions alternating with 4 async weeks:</p>
+      <ul>
+        <li>Critical evaluation: how to assess whether an AI output is reliable</li>
+        <li>Red team testing: students deliberately try to break AI to understand its limits</li>
+        <li>Prompt engineering as a thinking skill, not a trick</li>
+        <li>Ethics deep dive: responsible use, data privacy, detecting bias</li>
+        <li>Capstone: students build their own custom AI assistant</li>
+      </ul>
+      <p>Pre/post surveys aligned to Kirkpatrick Levels 1–3 for evaluation.</p>
+      <p>Beyond the course, I built AI tools that directly support student learning. The Intake Interview Simulator: I worked with faculty to get the clinical content (TCM diagnostic principles, interview protocols, charting standards) and designed a system prompt so AI generates a realistic patient profile and role-plays as that patient. Students practice conducting intake interviews anytime, and the system evaluates whether they asked the right diagnostic questions, followed proper sequencing, gathered key information. Like a standardized patient encounter, available 24/7.</p>
+      <p>I also built a course-specific AI chatbot for a fully async Western Medicine foundations course. Transcribed lecture audio with Whisper, structured it as a knowledge base, wrote system instructions with clear constraints: help students understand concepts, but don't give away quiz answers. Support learning, don't replace it.</p>
+      <p>I also founded the VUIM AI Lab: a monthly peer learning community for faculty and staff. Voluntary participation, psychological safety, low-stakes environment. And I currently lead the Education Resources subcommittee of the NCCAOM AI Taskforce, shaping AI competency standards for 33,000+ professionals nationally.</p>
+    </div>
+
+    <div class="case-images">
+      <img src="images/ai-literacy-paths.png" alt="AI literacy course learning path diagram" class="portfolio-img">
+      <img src="images/simulator.png" alt="TCM intake interview simulator" class="portfolio-img">
+    </div>
+    <div class="case-images single-col">
+      <img src="images/ai-lab-page.png" alt="VUIM AI Lab portfolio page" class="portfolio-img">
+    </div>
+
+    <div class="case-phase">
+      <div class="case-phase-label">Result</div>
+      <p>VUIM went from zero AI infrastructure to having institutional policy, a faculty community of practice, a student-facing course, AI-powered learning tools, and national-level thought leadership. All in under two years.</p>
+    </div>
+
+    <div class="honest-note">
+      <div class="honest-note-label">Honest note</div>
+      <p>The chatbot launched as a beta with a small group. Students liked having 24/7 support that actually knew the course content. But we couldn't scale it. No IT team, no budget for a standalone wrapper. Custom GPT has limitations. Both tools are modest. I'm not pretending I built an enterprise platform. But they solved real problems with the resources we had. The design thinking transfers regardless of the technology budget. Understanding the pedagogy, setting the right constraints, keeping humans in the loop: that's what matters.</p>
+    </div>
+  </div>
+
+  <!-- CASE 2: NC-SARA -->
+  <div class="case-study fade-in">
+    <div class="case-study-number">Case Study 02</div>
+    <h3>Building Distance Education Infrastructure</h3>
+    <p class="case-study-intro">Program Architecture &amp; Compliance — 150+ courses, 3 campuses, 5 accreditation bodies. Here's how the foundation was built.</p>
+
+    <div class="case-phase">
+      <div class="case-phase-label">Problem</div>
+      <p>When I joined VUIM during COVID, the school was operating under emergency exemptions for online learning. We knew that was going away. We needed to serve students across multiple states and offer coursework online. But we had zero infrastructure for distance education. No policies, no faculty training, no evaluation systems. Nothing.</p>
+    </div>
+
+    <div class="case-phase">
+      <div class="case-phase-label">Approach</div>
+      <p>I studied the C-RAC Distance Education guidelines and federal Regular and Substantive Interaction requirements. Did a full gap analysis. And I was realistic. I looked at what resources we actually had, not what we wished we had.</p>
+      <p>The key insight: I couldn't just write policies and expect compliance. Faculty had no support system. So I took a phased approach.</p>
+      <p>Step one: I proposed and established the CTLE — Center for Teaching &amp; Learning Excellence. Before we could do distance ed well, we needed a home base for faculty development.</p>
+      <p>From there, layer by layer: RSI training, pedagogy workshops, instructional design support, a management and monitoring system, DE-specific course evaluation criteria.</p>
+    </div>
+
+    <div class="case-images">
+      <img src="images/image45.png" alt="RSI presentation slides" class="portfolio-img">
+      <img src="images/teaching-infographic.png" alt="Small Changes in Teaching infographic" class="portfolio-img">
+    </div>
+
+    <div class="case-phase">
+      <div class="case-phase-label">Result</div>
+      <p>VUIM now has a functioning distance education program compliant with federal and state requirements across three states. 150+ courses managed quarterly. 5 accreditation bodies maintained in compliance (NC-SARA, ACAHM, three state certifications). Institutional assessment framework built from scratch.</p>
+    </div>
+
+    <div class="honest-note">
+      <div class="honest-note-label">Honest note</div>
+      <p>It wasn't glamorous work. A lot of it was reading regulations and translating them into practical steps. But that's how you build something that lasts.</p>
+      <p>I also learned a hard lesson early on. Before CTLE, I tried to launch a comprehensive faculty development program. Multiple modules, robust assessment. It flopped. Participation was minimal. I'd designed in a vacuum. I assumed my expertise meant I knew best. I never asked faculty what problems they actually wanted solved. When I later built the CTLE, I started with their pain points: LMS confusion, grading challenges, technology frustration. The adoption was completely different.</p>
+    </div>
+  </div>
+
+  <!-- CASE 3: CLA -->
+  <div class="case-study fade-in">
+    <div class="case-study-number">Case Study 03</div>
+    <h3>Data Infrastructure from Nothing</h3>
+    <p class="case-study-intro">Learning Analytics &amp; Data-Informed Decisions — You can't support teaching and learning if you don't know what's happening.</p>
+
+    <div class="case-phase">
+      <div class="case-phase-label">Problem</div>
+      <p>When I joined VUIM, I started asking basic questions. How many patients do our interns see per term? What do board exam trends look like? What does the data say about curriculum decisions?</p>
+      <p>Nobody knew. Not "didn't have the report handy" — nobody had ever collected or analyzed this data. They didn't know where to download it from the EHR. Learning data was the same: graduation exams, phase exams, board results existed, but nobody was tracking any of it. Decisions were based on anecdotal information. "I feel like students are struggling with this" became the basis for curriculum changes.</p>
+    </div>
+
+    <div class="case-phase">
+      <div class="case-phase-label">Approach</div>
+      <p>I established the Center for Learning Analytics. Nobody told me to. There was no budget for it. But the gap was clear.</p>
+      <p>I taught myself what I needed. I knew basic Python and Excel when I started. Learned Power BI from scratch. Later used AI to improve my code, though I never fed actual student or patient data to external AI tools, just the code itself.</p>
+      <p>I also built a local transcription pipeline using OpenAI's Whisper, entirely on-premises. Most paid transcription services are wrappers around the same open-source model. Our clinical content sometimes references patient scenarios, so I didn't want data going to third-party servers. Local processing: zero recurring cost, no file size limits, no data leaving the institution.</p>
+    </div>
+
+    <div class="case-images three-col">
+      <img src="images/powerbi-workflow.png" alt="Power BI data visualization workflow" class="portfolio-img">
+      <img src="images/board-exam-charts.png" alt="Board exam performance charts" class="portfolio-img">
+      <img src="images/clinic-data-workflow.png" alt="Clinic data workflow diagram" class="portfolio-img">
+    </div>
+
+    <div class="case-phase">
+      <div class="case-phase-label">Result</div>
+      <p>We now have what I call the VUIM datahouse. Pipelines for clinical data, learning outcomes, board exam tracking. Quarterly, monthly, yearly reports, all with interactive Power BI dashboards. The clinical data alone: hundreds of thousands of data points. Patient visits, ICD-10 codes, supervisor utilization, demographics. Before, this was invisible. Now it drives strategy.</p>
+      <p>95% reduction in data processing and reporting time — from days to hours.</p>
+    </div>
+
+    <div class="honest-note">
+      <div class="honest-note-label">Honest note</div>
+      <p>I'm not a data wizard. The point is: I saw what was needed to support teaching and learning, and I built it with whatever resources I had.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== MORE WORK ==================== -->
+<section class="section section-dark" id="more">
+  <div class="fade-in">
+    <span class="section-label">Beyond the Case Studies</span>
+    <h2>More work</h2>
+  </div>
+
+  <div class="more-grid">
+    <div class="more-category fade-in d1">
+      <h3>Clinical Education</h3>
+      <div class="more-item">
+        <p><strong>Safety training → zero incidents.</strong> Reduced needle/sharps incidents from quarterly occurrences to zero through targeted multimedia training.</p>
+      </div>
+      <div class="more-item">
+        <p><strong>Clinical readiness programs</strong> for intern rotations at INOVA and MSKCC. Compliance education, credentialing workflows, just-in-time learning resources.</p>
+      </div>
+      <div class="more-images">
+        <img src="images/safety-infographic.png" alt="Clinical safety training infographic" class="portfolio-img">
+        <img src="images/image1_PE.jpg" alt="Phase Exam pass rate over time" class="portfolio-img">
+      </div>
+    </div>
+
+    <div class="more-category fade-in d2">
+      <h3>Faculty Development</h3>
+      <div class="more-item">
+        <p><strong>50+ faculty</strong> managed and developed across three campuses.</p>
+      </div>
+      <div class="more-item">
+        <p><strong>Training course portfolio:</strong> Online Learning Readiness, Faculty Essentials, Board Exam Prep, AI Literacy, Academic Integrity. All complete async programs for onboarding and continuing education.</p>
+      </div>
+      <div class="more-item">
+        <p><strong>Monthly newsletters</strong> with research-based teaching strategies. Infographics on metacognition, classroom techniques, evidence-based pedagogy.</p>
+      </div>
+      <div class="more-images">
+        <img src="images/image8.png" alt="Grade distribution analytics dashboard" class="portfolio-img">
+        <img src="images/image13.png" alt="FAC001 course page on LMS" class="portfolio-img">
+      </div>
+    </div>
+
+    <div class="more-category fade-in d3">
+      <h3>AI Tools &amp; Automation</h3>
+      <div class="more-item">
+        <p><strong>Article Curator pipeline:</strong> HTML form → Make.com → Claude API → Notion + Google Drive. What took an hour per article now takes seconds. Cost: &lt;$0.01/use. Two earlier attempts failed before finding the right architecture.</p>
+      </div>
+      <div class="more-item">
+        <p><strong>AI-powered curriculum map:</strong> Interactive skill-tree prototype for a STEM MBA program. Students select completed courses; map highlights available next steps.</p>
+      </div>
+      <div class="more-images">
+        <img src="images/makecom-workflow.png" alt="Make.com automation workflow diagram" class="portfolio-img">
+        <img src="images/curriculum-map.png" alt="AI-powered SkillTree curriculum map" class="portfolio-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SKILLS + CLOSING ==================== -->
+<section class="section section-alt" id="skills">
+  <div class="fade-in">
+    <span class="section-label">Core Competencies</span>
+    <h2>Skills &amp; expertise</h2>
+  </div>
+
+  <div class="skills-grid" style="margin-bottom: 96px;">
+    <div class="skill-category fade-in d1">
+      <h3>L&amp;D Strategy &amp; Leadership</h3>
+      <p>Product Mindset, Agile, Learning Analytics, Kirkpatrick, Change Management, Strategic Planning, Policy Development</p>
+    </div>
+    <div class="skill-category fade-in d2">
+      <h3>Instructional Design &amp; Technology</h3>
+      <p>LXD, ADDIE, SAM, UDL, Generative AI Integration, Simulation Design, Articulate Storyline, Camtasia, Canvas, Populi</p>
+    </div>
+    <div class="skill-category fade-in d3">
+      <h3>AI &amp; Data Analytics</h3>
+      <p>Strategic AI Adoption, AI Ethics &amp; Governance, Prompt Engineering (ChatGPT, Claude, Gemini), Python, Power BI, Make.com, Data Architecture</p>
+    </div>
+  </div>
+
+  <div class="closing fade-in" style="border-top: 1px solid var(--border); padding-top: 64px; max-width: 700px;">
+    <p class="closing-quote" style="color: var(--heading); border-left-color: var(--accent);">I see the gap, I ask what's actually causing it, and I build what's needed — with the right tools when tools are the answer. Everything I design is oriented toward people walking away more capable because of it.</p>
+    <div>
+      <div class="closing-name" style="color: var(--heading);">Sung Woo</div>
+      <div class="closing-title" style="color: var(--muted);">Lead Instructional Designer &amp; Academic Dean</div>
+      <div class="closing-cred">Ph.D. Philosophy (UMD) · M.Ed. Instructional Design (WGU)</div>
+      <div class="closing-contact">
+        <a href="mailto:learning.ai.swoo@gmail.com" style="color: var(--heading); border-bottom-color: var(--border);">learning.ai.swoo@gmail.com</a>
+        <a href="https://www.linkedin.com/in/sungwon-woo/" target="_blank" rel="noopener" style="color: var(--heading); border-bottom-color: var(--border);">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer" style="border-top-color: var(--border);">
+    <span style="color: var(--muted);">© 2025 Sung Woo</span>
+    <span style="color: var(--muted);">Curriculum Development · AI-Enhanced Learning · Learning Innovation</span>
+  </div>
+</section>
+
+<!-- JAVASCRIPT -->
+<script>
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 100);
+}, { passive: true });
+
+// Fade-in observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.portfolio-img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+lightbox.addEventListener('click', () => {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+</script>
+
+</body>
+</html>
