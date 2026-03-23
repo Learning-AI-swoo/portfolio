@@ -895,6 +895,70 @@
         </div>
       </div>
     </div>
+
+    <!--
+  ═══════════════════════════════════════════════════════════════
+  NEW GROUP: Add this AFTER the "Applied AI and workflow systems"
+  more-grid block, still inside the section-dark #more section.
+  ═══════════════════════════════════════════════════════════════
+-->
+
+<div class="fade-in" style="margin-bottom:28px; margin-top:56px;">
+  <div class="case-phase-label">Technical builds and API integration</div>
+</div>
+
+<div class="more-grid">
+
+  <!-- ─── Card 1: Healing Walk ─── -->
+  <div class="more-card fade-in d1">
+    <h3>Healing Walk: API-driven interactive narrative</h3>
+    <p>Built and deployed a bilingual (Korean/English) interactive narrative web app that uses the Claude API to generate sensory, choice-driven walking experiences. Users choose paths through five nature ambiences; the AI generates narration, controls scene transitions, and produces a reflective diary entry at the end.</p>
+    <p>Single-file vanilla HTML/JS (no framework, no build step). Integrates Claude API messages endpoint with a structured system prompt (v3) that controls narrative style, choice formatting, and turn limits. Response parser extracts five tag types from each API response to drive scene images, ambient sound, particle effects, and surprise events. Howler.js handles audio crossfade. Full i18n system switches UI text, fonts, and system prompts by language.</p>
+    <p>Designed the prompt engineering to enforce output structure while preserving literary quality, and built client-side guardrails (22-turn hard limit on both client and server) to handle cases where the model drifts from format instructions.</p>
+    <p style="margin-top:14px;">
+      <a href="https://learning-ai-swoo.github.io/healing-walk/" target="_blank" rel="noopener" style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:1px;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(200,148,60,0.35);padding-bottom:1px;">LIVE APP ↗</a>
+      <span style="margin:0 12px;color:rgba(255,255,255,0.2);">|</span>
+      <a href="https://github.com/Learning-AI-swoo/healing-walk" target="_blank" rel="noopener" style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:1px;color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(200,148,60,0.35);padding-bottom:1px;">GITHUB ↗</a>
+    </p>
+    <div class="more-images">
+      <img src="images/healing-walk-architecture.svg" alt="Healing Walk system architecture diagram" class="portfolio-img">
+      <img src="images/HealingWalk-SC.png" alt="Healing Walk app screenshot showing forest stream scene with narration and choices" class="portfolio-img">
+    </div>
+  </div>
+
+  <!-- ─── Card 2: Syllabus Automation ─── -->
+  <div class="more-card fade-in d2">
+    <h3>Syllabus analysis automation with Claude Code</h3>
+    <p>Used Claude Code to extract textbook information from 444 syllabi files, deduplicate entries across varied citation formats, and cross-reference results against NCCAOM board exam content outlines. The output: a master spreadsheet with titles, authors, ISBNs, source syllabi, and board exam relevance flags.</p>
+    <p>Claude Code autonomously planned the task, wrote and executed Python scripts, parsed .docx files with regex-based section detection, and handled multiple citation styles (author-first, title-first, mixed). The main challenge was deduplication. Identical textbooks appeared in different formats across syllabi, and the initial prompts missed many matches.</p>
+    <p>Solved this through four iterations of prompt refinement: from single-pass extraction (v1) to fuzzy matching with thresholds (v2) to a two-step extract-then-dedup pipeline (v3) to a subject-specific subfolder approach with semantic name detection (v4). The final version produced accurate results. Total time: about 30 minutes, versus an estimated two weeks manually.</p>
+    <div class="more-images">
+      <img src="images/syllabus-automation-process.svg" alt="Syllabus automation process diagram showing four prompt iterations" class="portfolio-img">
+      <img src="images/claude-code-syllabus.png" alt="Claude Code terminal showing autonomous syllabus processing" class="portfolio-img">
+    </div>
+  </div>
+
+</div>
+
+<!--
+═══════════════════════════════════════════════════════════════
+FILES TO ADD TO YOUR images/ FOLDER:
+
+1. healing-walk-architecture.svg   (from this session)
+2. syllabus-automation-process.svg (from this session)
+3. HealingWalk-SC.png              (your screenshot)
+4. claude-code-syllabus.png        (your screenshot)
+═══════════════════════════════════════════════════════════════
+
+INSERT LOCATION:
+
+In your index.html, find the closing </div> of the second
+more-grid (the one containing "AI tools, automation..." and
+"AI-enhanced course development workflow"). Paste this code
+right after that </div>, before the closing </section> tag
+of the #more section.
+═══════════════════════════════════════════════════════════════
+-->
   </section>
 
   <section class="section section-dark" id="approach">
