@@ -642,7 +642,7 @@
     </div>
     <div class="fade-in d4">
       <div class="hero-actions">
-        <a href="/cdn-cgi/l/email-protection#f9959c988b9790979ed79890d78a8e9696b99e94989095d79a9694" class="hero-button">Contact</a>
+        <a href="mailto:learning.ai.swoo@gmail.com" class="hero-button">Contact</a>
         <a href="https://www.linkedin.com/in/sungwon-woo/" target="_blank" rel="noopener" class="hero-button">LinkedIn</a>
         <a href="#cases" class="hero-button">Selected Work</a>
       </div>
@@ -727,7 +727,7 @@
 
       <div class="case-phase">
         <div class="case-phase-label">What changed</div>
-        <p>The resulting infrastructure now supports more than 600 courses and more than 2,000 annual course enrollments across three campuses. The online doctoral program grew from fewer than 20 students per term to more than 60 after launch. Just as important, the school gained a reusable distance education and compliance structure that could support future growth beyond a single program. That curriculum database later became the foundation for a larger accreditation response project described below (<a href="#cs04" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-border);">Case Study 04</a>).</p>
+        <p>The resulting infrastructure now supports more than 600 courses and more than 2,000 annual course enrollments across three campuses. The online doctoral program grew from fewer than 20 students per term to more than 60 after launch. Just as important, the school gained a reusable distance education and compliance structure that could support future growth beyond a single program.</p>
       </div>
 
       <div class="honest-note">
@@ -829,71 +829,6 @@
       <div class="honest-note">
         <div class="honest-note-label">Honest note</div>
         <p>Some of the student-facing tools are still early prototypes. The main value came from building a coherent foundation first, then expanding where the institution had real readiness and capacity.</p>
-      </div>
-    </div>
-
-    <div class="case-study fade-in" id="cs04">
-      <div class="case-study-number">Case Study 04</div>
-      <h3>Built a reusable curriculum data system through structured AI collaboration</h3>
-      <p class="case-study-intro">Our accreditor replaced its entire competency framework with a new six-domain structure. We had four degree programs to remap and weeks to do it. I treated it as a data architecture problem and ran the project as a structured multi-session AI collaboration.</p>
-
-      <div class="case-meta">
-        <div class="case-meta-card">
-          <h4>My role</h4>
-          <p>Project lead, data architect, and tool builder. Worked with the Curriculum Committee on mapping decisions and gap resolution.</p>
-        </div>
-        <div class="case-meta-card">
-          <h4>Scope</h4>
-          <p>Full competency remapping for four degree programs (MAc, MAcHM, DAc, DAcHM), coverage gap identification and resolution, course learning outcome extraction from 97 syllabi, interactive visualization app, and committee communication materials.</p>
-        </div>
-        <div class="case-meta-card">
-          <h4>What I built</h4>
-          <p>A three-layer normalized JSON database, automated CLO extraction pipeline, interactive curriculum visualization app, competency mapping diagrams, and a set of handoff documents that kept the project coherent across seven AI sessions.</p>
-        </div>
-      </div>
-
-      <div class="case-phase">
-        <div class="case-phase-label">Challenge</div>
-        <p>The old framework used a three-domain structure with numbered sub-competencies. The new one introduced six domains with a flat code system. No crosswalk was provided. Each program needed its own complete competency map. Several new competencies had no clear match in our existing curriculum, meaning we had real gaps to find and address before the Self-Study Report submission.</p>
-        <p>Before this project, curriculum data lived in scattered spreadsheets and documents. Updating a single competency mapping meant touching multiple files by hand, and consistency across programs was hard to maintain.</p>
-      </div>
-
-      <div class="case-images">
-        <img src="images/overhaul-pressure.jpg" alt="Diagram showing the complete overhaul from old three-domain competency framework to new six-domain structure" class="portfolio-img" style="grid-column:1/-1;">
-      </div>
-
-      <div class="case-phase">
-        <div class="case-phase-label">Approach</div>
-        <p>A single long AI conversation was not the right tool for this. Context fills up, the model loses track of decisions, and quality drifts. I structured the project across distinct session types: a coordinator session for strategy and gap analysis, data-building sessions for JSON construction, Claude Code sessions for CLO extraction and app deployment, and update sessions for post-committee revisions.</p>
-        <p>Each session started with a handoff document: a markdown file that gave the model the full project state, prior decisions, file locations, and the specific task ahead. Writing handoffs is itself useful. It forces you to articulate what you know and what's still uncertain. Continuity across sessions was designed, not assumed.</p>
-      </div>
-
-      <div class="case-images">
-        <img src="images/multisession-flow.jpg" alt="Multi-session project architecture showing coordinator session, data sessions, Claude Code sessions, and their outputs" class="portfolio-img">
-        <img src="images/handoff-technique.png" alt="The handoff document technique showing how context transfers across sessions" class="portfolio-img">
-      </div>
-
-      <div class="case-phase">
-        <div class="case-phase-label">What I built</div>
-        <p>The foundation was a normalized JSON database in three layers: a master's competency map (133 records), a doctoral competency map (144 records), and a course graph (96 courses, 550 CLOs, 186 prerequisite edges). All three connect through course codes as join keys. One source of truth. Update the database, and every downstream output updates with it.</p>
-        <p>I used Claude Code to extract CLOs from 97 syllabus files, classifying each by Bloom's taxonomy level and assessment method.</p>
-        <p>On top of the database, I built an interactive React app with two views: a Cytoscape.js prerequisite flow graph (dagre layout, department color-coded) and a D3.js competency sunburst. Clicking any course node shows its mapped competencies, prerequisites, and CLOs. The Curriculum Committee used the tool during review. Admissions, student support, and administration now reference it as well.</p>
-        <p>After the committee reviewed the initial mapping, I compiled their feedback into a structured update session that resolved six coverage gaps, corrected program-specific course assignments, caught a data type bug, and regenerated all output files in about two hours.</p>
-      </div>
-
-      <div class="case-images">
-        <img src="images/structured-curriculum-db.jpg" alt="Three-layer normalized JSON database architecture with downstream outputs" class="portfolio-img">
-        <img src="images/curriculum-viz-sunburst.png" alt="Interactive curriculum visualization app showing competency sunburst and course detail panel" class="portfolio-img">
-      </div>
-
-      <div class="case-phase">
-        <div class="case-phase-label">What changed</div>
-        <p>The project compressed weeks of spreadsheet work into days. But the bigger change was structural. The committee could see coverage density, identify gaps visually, and make targeted decisions instead of working through flat tables row by row. The database is reusable and future-proof: when standards change again, the remapping starts from structured data with clear logic, not from scattered files and institutional memory.</p>
-      </div>
-
-      <div class="honest-note">
-        <div class="honest-note-label">Honest note</div>
-        <p>Human subject matter experts made the curriculum decisions. What AI compressed was the mechanical work: data construction, crosswalk logic, document generation. That compression created space for the discussions that actually required people.</p>
       </div>
     </div>
   </section>
@@ -1055,7 +990,7 @@
         <div class="closing-title">Learning Systems Strategist and Academic Leader</div>
         <div class="closing-cred">Ph.D. Philosophy (UMD) · M.Ed. Instructional Design (WGU)</div>
         <div class="closing-contact">
-          <a href="/cdn-cgi/l/email-protection#e08c8581928e898e87ce8189ce93978f8fa0878d81898cce838f8d"><span class="__cf_email__" data-cfemail="7a161f1b081413141d541b1354090d15153a1d171b131654191517">[email&#160;protected]</span></a>
+          <a href="mailto:learning.ai.swoo@gmail.com">learning.ai.swoo@gmail.com</a>
           <a href="https://www.linkedin.com/in/sungwon-woo/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
@@ -1067,7 +1002,7 @@
     </div>
   </section>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 100);
@@ -1103,4 +1038,16 @@
     document.querySelectorAll('.portfolio-img').forEach(img => {
       img.addEventListener('click', () => {
         lightboxImg.src = img.src;
-     
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  </script>
+</body>
+</html>
