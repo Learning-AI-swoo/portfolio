@@ -473,6 +473,12 @@
       margin: 0;
     }
 
+    .portfolio-img.diagram-fit {
+      max-height: none;
+      object-fit: contain;
+      object-position: center;
+    } 
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -728,10 +734,13 @@
         <p>To make the system more durable, I also structured the competency mapping as a normalized JSON database. That created a reusable data layer for accreditation reporting and made future revision work more manageable.</p>
       </div>
 
-      <div class="case-images three-col">
-        <img src="images/doctoral-architecture.svg" alt="Online program architecture development" class="portfolio-img">
-        <img src="images/competency-alignment.svg" alt="Competency alignment structure" class="portfolio-img">
-        <img src="images/doctoral-curriculum-map-db.svg" alt="Curriculum mapping database architecture" class="portfolio-img">
+      <div class="case-images" style="grid-template-columns: 1fr; margin-bottom: 24px;">
+        <img src="images/DE-transformation.jpg" alt="Transformation from emergency online delivery to durable distance education infrastructure" class="portfolio-img diagram-fit">
+      </div>
+
+      <div class="case-images">
+        <img src="images/DE-operation-stack.jpg" alt="Distance education operating system showing the institutional support stack" class="portfolio-img diagram-fit">
+        <img src="images/doctoral-structure.png" alt="Professional doctoral program architecture enabled by the broader distance education system" class="portfolio-img diagram-fit">
       </div>
 
       <div class="case-phase">
